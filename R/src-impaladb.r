@@ -201,7 +201,7 @@ expandAndCheckClassPath <- function(classpath=NULL,
   classpath <- lapply(jarfiles,
                       function (x) { head(list.files(path=list.files(path=jar.search.path, full.names=TRUE, all.files=TRUE),
                                                      pattern=paste0("^",x,"$"), full.names=TRUE), 1)})
-  do.call(paste, c(as.list(classpath), sep=":"))
+  do.call(rbind, as.list(classpath))[,1]
 }
 
 src_impaladb <- function(dbname, host = "localhost", port = 21050L,
